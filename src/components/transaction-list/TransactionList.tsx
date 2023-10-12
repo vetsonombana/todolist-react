@@ -1,22 +1,19 @@
 import React from "react";
-interface Transaction {
-  id: number;
-  description: string;
-  montant: number;
-  date: string;
-}
-
+import { Transaction } from "../../models/entities";
 interface TransactionListProps {
   transactions: Transaction[];
 }
 const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
   return (
     <table>
-      <tr>
-        <th>Description</th>
-        <th>Montant</th>
-        <th>Date</th>
-      </tr>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Montant</th>
+          <th>Date</th>
+          <th>Categorie id</th>
+        </tr>
+      </thead>
       <tbody>
         {transactions.map((transaction) => {
           return (
@@ -24,6 +21,7 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions }) => {
               <td>{transaction?.description}</td>
               <td>{transaction?.montant}</td>
               <td>{transaction?.date}</td>
+              <td>{transaction?.id_categorie}</td>
             </tr>
           );
         })}
