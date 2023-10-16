@@ -6,11 +6,10 @@ const initialState: State = {
   items: [],
 };
 export const transactionSlice = createSlice({
-  name: "transaction",
+  name: "transactions",
   initialState,
   reducers: {
     addTransaction: (state, action) => {
-      console.log("in");
       state.items = [...state.items, action.payload];
     },
     setTransactions: (state, action) => {
@@ -21,7 +20,7 @@ export const transactionSlice = createSlice({
 
 export const { addTransaction, setTransactions } = transactionSlice.actions;
 
-export const selectTransactions = (state: any) => state.transaction.items;
+export const selectTransactions = (state: any) => state.transactions.items;
 
 export const selectIncomes = (state: any) => {
   return state.transaction.items.filter(

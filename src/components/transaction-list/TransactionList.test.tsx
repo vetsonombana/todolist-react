@@ -11,7 +11,13 @@ const transactionMock: Transaction[] = [
   },
 ];
 test("transaction list fully rendered", () => {
-  render(<TransactionList transactions={transactionMock} />);
+  render(
+    <TransactionList
+      transactions={transactionMock}
+      deleteTransaction={() => {}}
+      modifyTransaction={() => {}}
+    />
+  );
 
   expect(screen.getAllByRole("row")).toHaveLength(2);
 });

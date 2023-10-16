@@ -13,3 +13,5 @@ export const addCategory = (category: any) => {
     },
   }).then((response) => response.json());
 };
+
+

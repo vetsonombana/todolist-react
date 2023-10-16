@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import { selectCategories } from "../../reducers/categories.reducer";
+import { useSelector } from "react-redux";
 import { Categorie } from "../../models/entities";
 
 const TransactionForm: React.FC<{
   handleSubmit: Function;
-  categories: Categorie[];
-}> = ({ handleSubmit, categories = [] }) => {
+}> = ({ handleSubmit }) => {
+  const categories = useSelector(selectCategories);
+  // const dispatch = useDispatch();
   const [transaction, setTransaction] = useState({
     montant: "",
     description: "",
@@ -13,63 +20,83 @@ const TransactionForm: React.FC<{
   });
 
   const addTransaction = () => {
-    console.log(transaction);
     handleSubmit(transaction);
   };
 
   return (
     <>
-      <div className="item">
-        <label>Montant</label>
-        <input
-          type="number"
-          name="montant"
-          onChange={(e) =>
-            setTransaction({ ...transaction, montant: e.target.value })
-          }
-        />
-      </div>
-      <div className="description">
-        <label>Description</label>
-        <textarea
-          name="description"
-          onChange={(e) =>
-            setTransaction({ ...transaction, description: e.target.value })
-          }
-          rows={5}
-          cols={20}
-        />
-      </div>
-      <div className="date">
-        <label>Date</label>
-        <input
-          type="date"
-          name="date"
-          onChange={(e) =>
-            setTransaction({ ...transaction, date: e.target.value })
-          }
-        />
-      </div>
-      <div className="id_categorie">
-        <label>Id Categorie</label>
-        <select
-          name="id_categorie"
-          onChange={(e) =>
-            setTransaction({
-              ...transaction,
-              id_categorie: parseInt(e.target.value),
-            })
-          }
-          value={transaction.id_categorie}
-        >
-          {categories.map((categorie) => {
-            return <option value={categorie.id}>{categorie.label}</option>;
-          })}
-        </select>
-      </div>
-      <button type="button" onClick={addTransaction}>
+      <Form noValidate>
+        <Row className="mb-3">
+          <Form.Group as={Col} md="6" controlId="validationCustom01">
+            <Form.Label>Montant</Form.Label>
+            <Form.Control
+              required
+              type="number"
+              name="montant"
+              onChange={(e) =>
+                setTransaction({ ...transaction, montant: e.target.value })
+              }
+            />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col} md="6" controlId="validationCustom01">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="description"
+              onChange={(e) =>
+                setTransaction({ ...transaction, description: e.target.value })
+              }
+            />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+        </Row>
+
+        <Row className="mb-3">
+          <Form.Group as={Col} md="6" controlId="validationCustom01">
+            <Form.Label>Date</Form.Label>
+            <Form.Control
+              required
+              type="date"
+              name="date"
+              onChange={(e) =>
+                setTransaction({ ...transaction, date: e.target.value })
+              }
+            />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col} md="6" controlId="validationCustom01">
+            <Form.Label>Id Categorie</Form.Label>
+            <Form.Select
+              name="id_categorie"
+              onChange={(e) =>
+                setTransaction({
+                  ...transaction,
+                  id_categorie: parseInt(e.target.value),
+                })
+              }
+            >
+              {categories.map((categorie: Categorie) => {
+                return (
+                  <option key={categorie.id} value={categorie.id}>
+                    {categorie.label}
+                  </option>
+                );
+              })}
+            </Form.Select>
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+        </Row>
+      </Form>
+
+      <Button
+        type="button"
+        style={{ width: "100%", marginBottom: "10px" }}
+        onClick={addTransaction}
+      >
         ADD TRANSACTION
-      </button>
+      </Button>
     </>
   );
 };
