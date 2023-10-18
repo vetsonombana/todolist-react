@@ -37,7 +37,6 @@ const TransactionForm: React.FC<{
                 setTransaction({ ...transaction, montant: e.target.value })
               }
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="6" controlId="validationCustom01">
             <Form.Label>Description</Form.Label>
@@ -49,7 +48,6 @@ const TransactionForm: React.FC<{
                 setTransaction({ ...transaction, description: e.target.value })
               }
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
         </Row>
 
@@ -64,7 +62,6 @@ const TransactionForm: React.FC<{
                 setTransaction({ ...transaction, date: e.target.value })
               }
             />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col} md="6" controlId="validationCustom01">
             <Form.Label>Id Categorie</Form.Label>
@@ -85,7 +82,6 @@ const TransactionForm: React.FC<{
                 );
               })}
             </Form.Select>
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
         </Row>
       </Form>
@@ -95,7 +91,7 @@ const TransactionForm: React.FC<{
         style={{ width: "100%", marginBottom: "10px" }}
         onClick={addTransaction}
       >
-        ADD TRANSACTION
+        AJOUTER
       </Button>
     </>
   );

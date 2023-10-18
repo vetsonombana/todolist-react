@@ -108,7 +108,6 @@ const TransactionList: React.FC<TransactionListProps> = ({
                       })
                     }
                   />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
               </Row>
               <Row>
@@ -127,7 +126,6 @@ const TransactionList: React.FC<TransactionListProps> = ({
                       })
                     }
                   />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
               </Row>
               <Row className="mb-3">
@@ -145,7 +143,6 @@ const TransactionList: React.FC<TransactionListProps> = ({
                       })
                     }
                   />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
               </Row>
               <Row>
@@ -169,7 +166,6 @@ const TransactionList: React.FC<TransactionListProps> = ({
                       );
                     })}
                   </Form.Select>
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
               </Row>
             </Form>

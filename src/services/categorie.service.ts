@@ -14,4 +14,18 @@ export const addCategory = (category: any) => {
   }).then((response) => response.json());
 };
 
+export const deleteCategory = (id: number) => {
+  return fetch("http://localhost:8000/api/categories?id=" + id, {
+    method: "DELETE",
+  }).then((response) => response.json());
+};
 
+export const modifyCategory = (category: any) => {
+  return fetch("http://localhost:8000/api/categories", {
+    method: "PUT",
+    body: JSON.stringify(category),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
